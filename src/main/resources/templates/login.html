@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head  th:include="index">
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+</head>
+<body>
+    <video autoplay loop muted id="v">
+        <source th:src="@{static/media/star.mp4}">
+    </video>
+    <div id="login" class="layui-container">
+        <div class="layui-row" style="margin-top: 250px">
+            <div class="layui-col-md4 layui-col-md-offset4">
+                <div class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账号</label>
+                        <div class="layui-input-block">
+                            <input class="layui-input" v-model="account">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input type="password" class="layui-input" v-model="password">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button class=" layui-btn layui-btn-radius layui-btn-sm" style="float: right" @click="login">登录</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script th:src="@{static/js/login/login.js}"></script>
+<link rel="stylesheet" th:href="@{static/js/login/login.css}">
+</html>
+

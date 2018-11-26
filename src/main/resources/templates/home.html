@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>杂货铺</title>
+    <div th:replace="index::index"></div>
+
+
+</head>
+<body>
+    <div id="home" class="layui-layout-body">
+        <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                <div class="layui-logo">{{currentUser.name}}的杂货铺</div>
+                <!-- 头部区域（可配合layui已有的水平导航） -->
+
+                <ul class="layui-nav layui-layout-right">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                            {{currentUser.name}}
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">基本资料</a></dd>
+                            <dd><a href="">安全设置</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a th:href="@{/logout}">退了</a></li>
+                </ul>
+            </div>
+
+            <div class="layui-side layui-bg-black">
+                <div class="layui-side-scroll">
+                    <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                    <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+                        <li class="layui-nav-item">
+                            <a href="javascript:;">系统配置</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">选项一</a></dd>
+                                <dd><a href="javascript:;">选项二</a></dd>
+                                <dd><a href="javascript:;">选项三</a></dd>
+                                <dd><a href="">跳转项</a></dd>
+                            </dl>
+                        </li>
+                        <li class="layui-nav-item">
+                            <a href="javascript:;">杂货铺</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="javascript:;">豆瓣租房</a></dd>
+                                <dd><a href="javascript:;">后台模版</a></dd>
+                                <dd><a href="javascript:;">电商平台</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layui-body" style="padding: 5px">
+                <!-- 内容主体区域 -->
+               <!-- <div style="padding: 15px;">内容主体区域</div>-->
+                <dbzf></dbzf>
+            </div>
+
+            <div class="layui-footer">
+                <!-- 底部固定区域 -->
+                © liuchikit@foxmail.com
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script th:src="@{static/js/home/home.js}"></script>
+</html>
+
+

@@ -1,0 +1,48 @@
+<script type="text/x-template" id="dbzf">
+    <div>
+        <form class="layui-form" >
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">多规则验证</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="number" lay-verify="required|number" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证日期</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">验证链接</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+<script>
+    Vue.component('dbzf', {
+        template: "#dbzf",
+        data : function () {
+            return "123"
+        },
+        created: function () {
+          debugger
+        },
+
+        mounted: function(){
+            debugger
+            //日期
+            laydate.render({
+                elem: '#date'
+            });
+            laydate.render({
+                elem: '#date1'
+            });
+        }
+    })
+</script>

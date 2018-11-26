@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS `tb_user`;
+CREATE TABLE `tb_user`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `account` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '账号',
+  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `gender` tinyint(1) NULL DEFAULT NULL COMMENT '性别',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `creator_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `creator_id` int(10) NULL DEFAULT NULL COMMENT '创建人ID',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `updater_name` varbinary(20) NULL DEFAULT NULL COMMENT '更新人',
+  `updater_id` int(10) NULL DEFAULT NULL COMMENT '更新人ID',
+  `status` tinyint(1) NULL DEFAULT NULL COMMENT '状态',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
