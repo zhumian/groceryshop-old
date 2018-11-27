@@ -42,3 +42,9 @@ mapper:
 pagehelper:
   helper-dialect: mysql
 
+
+
+config:
+  # 开发模式：dev 生产模式： product
+  mode: dev
+

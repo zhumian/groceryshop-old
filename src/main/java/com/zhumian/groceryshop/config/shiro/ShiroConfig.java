@@ -1,5 +1,6 @@
 package com.zhumian.groceryshop.config.shiro;
 
+import com.zhumian.groceryshop.properties.Config;
 import org.apache.shiro.mgt.RememberMeManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.SessionListener;
@@ -9,6 +10,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,9 @@ import java.util.*;
 
 @Configuration
 public class ShiroConfig {
+
+    @Autowired
+    private Config config;
 
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager){
@@ -40,8 +45,13 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/login","anon");
         filterChainDefinitionMap.put("/logout","logout");
         filterChainDefinitionMap.put("/static/**","anon");
-        filterChainDefinitionMap.put("/**","anon");
         filterChainDefinitionMap.put("/logout","logout");
+
+        //开发模式不进行拦截
+        if(Objects.equals(config.getMode(), "product")){
+            filterChainDefinitionMap.put("/**","authc");
+        }
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
