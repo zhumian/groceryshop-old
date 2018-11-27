@@ -7,31 +7,28 @@
     <script th:src="@{static/thirdpart/vue/vue-resource.js}"></script>
     <script th:src="@{static/thirdpart/layui-v2.4.3/layui/layui.all.js}"></script>
 
+    <script th:src="@{static/thirdpart/datatables/bootstrapStyle/jquery.dataTables.min.js}"></script>
+    <script th:src="@{static/thirdpart/datatables/bootstrapStyle/dataTables.bootstrap.js}"></script>
+    <link rel="stylesheet" th:href="@{static/thirdpart/datatables/bootstrapStyle/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{static/thirdpart/datatables/bootstrapStyle/dataTables.bootstrap.css}">
 
     <script th:src="@{static/base/layerUtil.js}"></script>
+    <script th:src="@{static/base/tableUtil.js}"></script>
 
     <!--<link rel="stylesheet" th:href="@{static/thirdpart/bootstrap/bootstrap.min.css}">-->
     <link rel="stylesheet" th:href="@{static/thirdpart/layui-v2.4.3/layui/css/layui.css}">
-    <link rel="stylesheet" th:href="@{static/thirdpart/layDate-v5.0.9/laydate/theme/default/laydate.css}">
 
-    <script>
+    <script th:inline="javascript">
+
         /*<![CDATA[*/
         var currentUser = /*[[${session.currentUser}]]*/ 'currentUser';
         /*]]>*/
-        var base = "/groceryshop";
 
+        var base = "/groceryshop";
         var laydate = layui.laydate;
         var element = layui.element;
-       /* layui.use(['layer', 'form', 'element', 'layedit', 'laydate'], function(){
-            debugger
-            var layer = layui.layer;
-            var form = layui.form;
-            var element = layui.element;
-            var layedit = layui.layedit;
-            var laydate = layui.laydate;
-
-        });*/
-
+        var form = layui.form;
+        var layedit = layui.layedit;
     </script>
 
     <script th:replace="component::component"></script>

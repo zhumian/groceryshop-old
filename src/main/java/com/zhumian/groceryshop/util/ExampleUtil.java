@@ -2,6 +2,7 @@ package com.zhumian.groceryshop.util;
 
 import com.zhumian.groceryshop.annotation.FuzzyQuery;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.persistence.Transient;
@@ -28,7 +29,7 @@ public class ExampleUtil {
 
             //忽略null值
             Object fieldValue = getFieldValueByName(field.getName(), obj, entityClass);
-            if(fieldValue == null){
+            if(fieldValue == null || StringUtils.isBlank(String.valueOf(fieldValue))){
                 continue;
             }
 
@@ -47,6 +48,8 @@ public class ExampleUtil {
         if (fuzzyQuery != null) {
             // 双向模糊查询
             criteria.andLike(field.getName(), "%" + fieldValue + "%");
+        }else{
+            criteria.andEqualTo(field.getName(), fieldValue);
         }
     }
 

@@ -3,7 +3,7 @@ package com.zhumian.groceryshop.base.service;
 import java.io.Serializable;
 import java.util.List;
 
-public interface BaseService<PK extends Serializable, T extends Serializable> {
+public interface BaseService<PK, T> {
 
     T getById(PK pk);
 

@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 @Slf4j
-public abstract class BaseServiceImpl<PK extends Serializable, T extends Serializable> implements BaseService<PK, T>{
+public abstract class BaseServiceImpl<PK, T> implements BaseService<PK, T>{
 
     @Autowired
     protected BaseMapper<T> mapper;
