@@ -1,4 +1,4 @@
-package com.zhumian.groceryshop.business.business.dbzf.req;
+package com.zhumian.groceryshop.business.dbzf.req;
 
 import com.zhumian.groceryshop.base.vo.BasePageRequest;
 import lombok.Data;

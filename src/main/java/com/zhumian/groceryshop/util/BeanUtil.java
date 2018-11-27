@@ -1,10 +1,14 @@
 package com.zhumian.groceryshop.util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 
+import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class BeanUtil {
@@ -25,7 +29,33 @@ public class BeanUtil {
                 targetList.add(target);
             }
         }
+    }
 
+    public static Map obj2Map(Object obj){
+        if(obj == null){
+            return null;
+        }
+        Map<String, Object> map = new HashMap<>();
+        copyProperties(obj, map, true);
+        return map;
+    }
+
+    public static void copyProperties(Object source, Map target, boolean cascade){
+        Field[] fields = source.getClass().getDeclaredFields();
+        if (cascade){
+            Field[] parentFields = source.getClass().getSuperclass().getDeclaredFields();
+            fields = ArrayUtils.addAll(fields, parentFields);
+        }
+        try {
+            for (Field field : fields) {
+                field.setAccessible(true);
+                if(field.get(source) != null){
+                    target.put(field.getName(), field.get(source));
+                }
+            }
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     public static Object getInstanceByReflect(Class clazz){

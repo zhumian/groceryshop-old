@@ -1,4 +1,4 @@
-package com.zhumian.groceryshop.business.business.dbzf.res;
+package com.zhumian.groceryshop.business.dbzf.res;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

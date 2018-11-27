@@ -11,3 +11,21 @@ CREATE TABLE `tb_dbzf`  (
   `create_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3477 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+
+DROP TABLE IF EXISTS `tb_dict`;
+CREATE TABLE `tb_dict`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '编码',
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `order` tinyint(4) NULL DEFAULT NULL COMMENT '排序',
+  `type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型',
+  `status` tinyint(1) NULL DEFAULT NULL COMMENT '状态',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `creator_id` int(10) NULL DEFAULT NULL COMMENT '创建人ID',
+  `creator_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人名称',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `updater_id` int(10) NULL DEFAULT NULL COMMENT '更新人ID',
+  `updater_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统字典表' ROW_FORMAT = Dynamic;

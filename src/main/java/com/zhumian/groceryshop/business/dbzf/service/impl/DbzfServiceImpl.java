@@ -1,14 +1,14 @@
-package com.zhumian.groceryshop.business.business.dbzf.service.impl;
+package com.zhumian.groceryshop.business.dbzf.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zhumian.groceryshop.base.service.BaseServiceImpl;
 import com.zhumian.groceryshop.base.vo.BasePageResponse;
 import com.zhumian.groceryshop.bean.business.dbzf.Dbzf;
-import com.zhumian.groceryshop.business.business.dbzf.mapper.DbzfMapper;
-import com.zhumian.groceryshop.business.business.dbzf.req.DbzfPageListRequest;
-import com.zhumian.groceryshop.business.business.dbzf.res.DbzfPageListResponse;
-import com.zhumian.groceryshop.business.business.dbzf.service.DbzfService;
+import com.zhumian.groceryshop.business.dbzf.mapper.DbzfMapper;
+import com.zhumian.groceryshop.business.dbzf.req.DbzfPageListRequest;
+import com.zhumian.groceryshop.business.dbzf.res.DbzfPageListResponse;
+import com.zhumian.groceryshop.business.dbzf.service.DbzfService;
 import com.zhumian.groceryshop.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class DbzfServiceImpl extends BaseServiceImpl<Integer, Dbzf> implements D
         select.setArea(request.getArea());
         select.setTitle(request.getTitle());
         Page page = PageHelper.startPage(request.getStart(), request.getLength());
-        List<Dbzf> dbzfs = queryByParams(select);
+        List<Dbzf> dbzfs = mapper.pageList(BeanUtil.obj2Map(request));
         List<DbzfPageListResponse> responses = new ArrayList<>();
         BeanUtil.list2list(dbzfs, responses, DbzfPageListResponse.class);
         return new BasePageResponse<>(request.getDraw(), page.getTotal(), responses);
