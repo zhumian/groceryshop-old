@@ -67,15 +67,7 @@ var tableUtil = function () {
 
             return table;
         },
-        /**
-         * 根据url重新加载数据
-         * @param $datatable datables对象
-         * @param url  get请求url，需要拼接参数
-         */
-        reload: function (table, url, params) {
-            url = url + "?" + $.param(params);
-            table.ajax.url(url).load();
-        }
+
     }
 
 }();
