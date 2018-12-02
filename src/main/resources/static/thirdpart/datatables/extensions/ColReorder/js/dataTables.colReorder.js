@@ -93,16 +93,16 @@ function fnDomSwitch( nParent, iFrom, iTo )
 var factory = function( $, DataTable ) {
 "use strict";
 
-/**
- * Plug-in for DataTables which will reorder the internal column structure by taking the column
- * from one position (iFrom) and insert it into a given point (iTo).
- *  @method  $.fn.dataTableExt.oApi.fnColReorder
- *  @param   object oSettings DataTables settings object - automatically added by DataTables!
- *  @param   int iFrom Take the column to be repositioned from this point
- *  @param   int iTo and insert it into this point
- *  @returns void
- */
 $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo )
+    /**
+     * Plug-in for DataTables which will reorder the internal column structure by taking the column
+     * from one position (iFrom) and insert it into a given point (iTo).
+     *  @method  $.fn.dataTableExt.oApi.fnColReorder
+     *  @param   object oSettings DataTables settings object - automatically added by DataTables!
+     *  @param   int iFrom Take the column to be repositioned from this point
+     *  @param   int iTo and insert it into this point
+     *  @returns void
+     */
 {
 	var v110 = $.fn.dataTable.Api ? true : false;
 	var i, iLen, j, jLen, iCols=oSettings.aoColumns.length, nTrs, oCol;

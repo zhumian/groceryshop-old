@@ -20,10 +20,15 @@ public class BaseResponse<T> {
         this.data = data;
     }
 
+    public BaseResponse(T data) {
+        this.data = data;
+    }
+
     public BaseResponse(boolean success, String msg) {
         this.success = success;
         this.msg = msg;
     }
+
 
     public BaseResponse(boolean success) {
         this.success = success;
@@ -31,5 +36,6 @@ public class BaseResponse<T> {
 
     public BaseResponse() {
         this.success = true;
+        this.msg = "操作成功";
     }
 }

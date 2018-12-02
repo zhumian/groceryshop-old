@@ -1,0 +1,108 @@
+<script type="text/x-template" id="dict" xmlns:v="http://www.w3.org/1999/xhtml"
+        xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div>
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <select name="">
+                        <option value="">城市</option>
+                        <option value="广州市">广州市</option>
+                    </select>
+                </div>
+                <div class="layui-input-inline">
+                    <select name="">
+                        <option value="">地区</option>
+                        <option value="天河区">天河区</option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">标题</label>
+                    <div class="layui-input-inline">
+                        <input v-model="title"  class="layui-input">
+                    </div>
+                </div>
+                <button class="layui-btn layui-btn-sm layui-btn-radius"  v-on:click="openLayer">新增</button>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/x-template" id="layer">
+    <div class="layui-form" style="margin: 10px">
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input v-model="type" lay-verify="pass" placeholder="类型" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="password" name="password" lay-verify="pass" placeholder="编码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="password" name="password" lay-verify="pass" placeholder="名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="password" name="password" lay-verify="pass" placeholder="排序" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+                <input type="password" name="password" lay-verify="pass" placeholder="是否生效" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('dict', {
+        template: "#dict",
+        data : function (){
+            return {
+                table : null,
+                city : null,
+                area : null,
+                title : null,
+                type : null,
+            }
+        },
+        methods : {
+            loadTable : function (flag) {
+                var columns = [
+                    {title : "标题", render: function (data, type, row, meta) {
+                            return '<a href="' + row.url + '">' + row.title + '</a>'
+                        }},
+                    {title : "发布时间", data : "publishTime"}
+                ];
+                var params = {
+                    city : this.city,
+                    area : this.area,
+                    title : this.title
+                };
+                var url = base + "/business/dbzf/list";
+                if(!this.table){
+                    this.table = tableUtil.load($("table"), url, params, columns);
+                }else {
+                    this.table.settings()[0].ajax.data = params;
+                    this.table.ajax.reload();
+                }
+
+            },
+            openLayer : function (flag) {
+                var app = this;
+                layerUtil.open("新增",$("#layer").html(), function (layero, index) {
+                    debugger
+                    Vue.compile(layero[0]);
+                }, function (index, layero) {
+                    debugger
+                }, { area: ['300px', 'auto']})
+            }
+        },
+
+        mounted: function(){
+            element.render();
+            form.render();
+        }
+    })
+</script>

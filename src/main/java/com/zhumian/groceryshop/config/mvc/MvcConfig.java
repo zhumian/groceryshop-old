@@ -1,6 +1,7 @@
 package com.zhumian.groceryshop.config.mvc;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 @Configuration
@@ -15,5 +16,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
         super.addResourceHandlers(registry);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedHeaders("*")
+                .allowedOrigins("*")
+                .allowedMethods("*")
+                .allowCredentials(false);
     }
 }

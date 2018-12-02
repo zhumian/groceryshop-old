@@ -27,10 +27,10 @@ public class DbzfServiceImpl extends BaseServiceImpl<Integer, Dbzf> implements D
         select.setCity(request.getCity());
         select.setArea(request.getArea());
         select.setTitle(request.getTitle());
-        Page page = PageHelper.startPage(request.getStart(), request.getLength());
+        Page page = PageHelper.startPage(request.getPage(), request.getSize());
         List<Dbzf> dbzfs = mapper.pageList(BeanUtil.obj2Map(request));
         List<DbzfPageListResponse> responses = new ArrayList<>();
         BeanUtil.list2list(dbzfs, responses, DbzfPageListResponse.class);
-        return new BasePageResponse<>(request.getDraw(), page.getTotal(), responses);
+        return new BasePageResponse<>(page.getTotal(), responses);
     }
 }

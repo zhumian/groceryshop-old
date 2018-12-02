@@ -17,7 +17,6 @@ public class Dbzf  {
     private String area;
     private String articleId;
     private String url;
-
     @FuzzyQuery
     private String title;
     private String authorUrl;

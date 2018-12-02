@@ -36,7 +36,7 @@
                         <li class="layui-nav-item">
                             <a href="javascript:;">系统配置</a>
                             <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">选项一</a></dd>
+                                <dd><a href="javascript:;" v-on:click="openTab('dict')">数据字段</a></dd>
                                 <dd><a href="javascript:;">选项二</a></dd>
                                 <dd><a href="javascript:;">选项三</a></dd>
                                 <dd><a href="">跳转项</a></dd>
@@ -45,7 +45,7 @@
                         <li class="layui-nav-item">
                             <a href="javascript:;">杂货铺</a>
                             <dl class="layui-nav-child">
-                                <dd><a href="javascript:;">豆瓣租房</a></dd>
+                                <dd><a href="javascript:;" v-on:click="openTab('dbzf')">豆瓣租房</a></dd>
                                 <dd><a href="javascript:;">后台模版</a></dd>
                                 <dd><a href="javascript:;">电商平台</a></dd>
                             </dl>
@@ -57,7 +57,8 @@
             <div class="layui-body" style="padding: 5px">
                 <!-- 内容主体区域 -->
                <!-- <div style="padding: 15px;">内容主体区域</div>-->
-                <dbzf></dbzf>
+                <dict></dict>
+               <!-- <dbzf v-if="tab==='dbzf'"></dbzf>-->
             </div>
 
             <div class="layui-footer">
@@ -65,7 +66,6 @@
                 © liuchikit@foxmail.com
             </div>
         </div>
-
     </div>
 </body>
 

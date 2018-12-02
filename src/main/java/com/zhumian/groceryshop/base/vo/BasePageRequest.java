@@ -5,22 +5,21 @@ import lombok.Data;
 @Data
 public class BasePageRequest extends BaseRequest {
 
-    private Integer start;
+    private Integer page;
 
-    private Integer length;
-
-    private Integer draw;
+    private Integer size;
 
     public BasePageRequest(){
-        this.start = 1;
-        this.length = 10;
+        this.page = 1;
+        this.size = 10;
     }
 
-    public void setStart(Integer start) {
-        this.start =start < 0 ? 1 : start;
+    public void setPage(Integer page) {
+        this.page = page < 0 ? 1 : page;
     }
 
-    public Integer getStart() {
-        return start < 0 ? start  : (start / length + 1);
+
+    public void setSize(Integer size) {
+        this.size = size < 0 ? 10 : size;
     }
 }

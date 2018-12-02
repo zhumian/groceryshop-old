@@ -7,19 +7,15 @@ import java.util.List;
 @Data
 public class BasePageResponse<T> extends BaseResponse {
 
-    private Integer draw;
-    private Long recordsTotal;
-    private Long recordsFiltered;
+    private Long total;
     private List<T> data;
 
     public BasePageResponse(){
         this.data = new ArrayList<>();
     }
 
-    public BasePageResponse(Integer draw, Long total, List<T> data){
-        this.draw = draw;
-        this.recordsTotal = total;
-        this.recordsFiltered = total;
+    public BasePageResponse(Long total, List<T> data){
+        this.total = total;
         this.data = data;
     }
 }
